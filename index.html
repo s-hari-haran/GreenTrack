@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFootprint - Calculate Your Carbon Footprint</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Calculate Your Carbon Footprint Today</h1>
+            <p>Helps in reducing carbon emissions effectively.</p>
+        </header>
+        <form id="footprintForm">
+            <label for="activities">Enter Your Daily Activities Here:</label>
+            <input type="text" id="activities" name="activities" required>
+            
+            <label for="energyUsage">Energy Usage (kWh):</label>
+            <input type="number" id="energyUsage" name="energyUsage" required>
+            
+            <label for="transport">Transportation (miles):</label>
+            <input type="number" id="transport" name="transport" required>
+            
+            <label for="diet">Diet (meals/day):</label>
+            <input type="number" id="diet" name="diet" required>
+            
+            <label for="recommendations">Receive Personalized Recommendations:</label>
+            <button type="button" id="recommendations">Get Recommendations</button>
+            
+            <label for="phone">Phone number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="feedback">Share Your Feedback with Us:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            
+            <button type="submit">Calculate & Reduce Emissions Now</button>
+        </form>
+        <div id="results" class="hidden">
+            <h2>Your Carbon Footprint</h2>
+            <p id="carbonFootprint">Loading...</p>
+        </div>
+    </div>
+</body>
+</html>
