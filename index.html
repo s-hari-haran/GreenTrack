@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFootprint - Your Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>EcoFootprint</h1>
+        <nav>
+            <ul>
+                <li><a href="#calculate">Calculate</a></li>
+                <li><a href="#offset">Offsetting</a></li>
+                <li><a href="#business">Businesses</a></li>
+                <li><a href="#info">Information</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="calculate">
+            <h2>Calculate Your Carbon Footprint</h2>
+            <form id="footprintForm">
+                <label for="energyUsage">Energy Usage (kWh):</label>
+                <input type="number" id="energyUsage" name="energyUsage" required>
+                
+                <label for="transport">Transportation (miles):</label>
+                <input type="number" id="transport" name="transport" required>
+                
+                <label for="diet">Diet (meals/day):</label>
+                <input type="number" id="diet" name="diet" required>
+                
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="results" class="hidden">
+                <h3>Your Carbon Footprint</h3>
+                <p id="carbonFootprint">Loading...</p>
+            </div>
+        </section>
+        <section id="offset">
+            <h2>Offset Your Emissions</h2>
+            <p>Learn how to offset your carbon emissions through various projects and initiatives.</p>
+        </section>
+        <section id="business">
+            <h2>For Businesses</h2>
+            <p>Discover how your business can reduce its carbon footprint and achieve sustainability goals.</p>
+        </section>
+        <section id="info">
+            <h2>Information</h2>
+            <p>Get informed about climate change, sustainability, and more.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 EcoFootprint. All rights reserved.</p>
+    </footer>
+</body>
+</html>
