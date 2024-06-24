@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Replace with your background image path */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay for better text visibility */
+    padding: 20px;
+    max-width: 600px;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 10px 0 5px;
+    font-size: 1em;
+}
+
+form input, form textarea, form button {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+form input, form textarea {
+    font-size: 1em;
+    width: 100%;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+.hidden {
+    display: none;
+}
+
+#results {
+    margin-top: 20px;
+    background: rgba(0, 128, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#results h2 {
+    margin-top: 0;
+}
