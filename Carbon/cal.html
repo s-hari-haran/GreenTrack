@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #e4ecf1;
+            color: #333;
+            background-image: url(https://wallpapers.com/images/hd/beautiful-ocean-pictures-1600-x-900-zxr889qyvrwm2gfb.jpg);
+            background-repeat: no-repeat;
+        }
+
+        header {
+            background-color: #369eb37a;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #0073e6;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: white;
+            padding: 30px 35px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #89b6e2;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e9f5ff;
+            border: 1px solid #b3e0ff;
+            border-radius: 4px;
+            display: none;
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 5px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 0;
+        }
+
+        .tips {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f0fff0;
+            border: 1px solid #b3ffb3;
+            border-radius: 4px;
+            display: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Water Footprint Calculator</h1>
+    </header>
+    <main>
+        <form id="waterFootprintForm">
+            <div class="form-group">
+                <label for="showers">Number of Showers per week:</label>
+                <input type="number" id="showers" name="showers" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="clothesWashing">Loads of Clothes washed per week:</label>
+                <input type="number" id="clothesWashing" name="clothesWashing" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="dishesWashing">Loads of Dishes washed per week (by hand):</label>
+                <input type="number" id="dishesWashing" name="dishesWashing" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="dishwasher">Loads of Dresses washed per week (by machine):</label>
+                <input type="number" id="dishwasher" name="dishwasher" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="toiletFlushes">Toilet Flushes per day:</label>
+                <input type="number" id="toiletFlushes" name="toiletFlushes" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="brushingTeeth">Times Brushing teeth per day:</label>
+                <input type="number" id="brushingTeeth" name="brushingTeeth" min="0" required>
+            </div>
+            <button type="submit">Calculate Water Footprint</button>
+        </form>
+        <div id="result"></div>
+        <div class="tips">
+            <h2>Tips to Reduce Your Water Footprint</h2>
+            <ul>
+                <li>Take shorter showers and use water-efficient showerheads.</li>
+                <li>Wash full loads of clothes and use water-saving settings.</li>
+                <li>Wash dishes in a dishwasher instead of by hand, and only run full loads.</li>
+                <li>Fix any leaks in faucets, toilets, and pipes promptly.</li>
+                <li>Install low-flow toilets and consider using greywater systems for irrigation.</li>
+                <li>Turn off the tap while brushing your teeth.</li>
+                <li>Use a broom instead of a hose to clean driveways and sidewalks.</li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>Water Footprint Calculator © 2024</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('waterFootprintForm');
+            const resultDiv = document.getElementById('result');
+            const tipsDiv = document.querySelector('.tips');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const showers = parseInt(document.getElementById('showers').value);
+                const clothesWashing = parseInt(document.getElementById('clothesWashing').value);
+                const dishesWashing = parseInt(document.getElementById('dishesWashing').value);
+                const dishwasher = parseInt(document.getElementById('dishwasher').value);
+                const toiletFlushes = parseInt(document.getElementById('toiletFlushes').value);
+                const brushingTeeth = parseInt(document.getElementById('brushingTeeth').value);
+
+                // Average water usage values
+                const showerWater = 90; // liters per shower
+                const clothesWashingWater = 75; // liters per load
+                const dishesWashingWater = 40; // liters per load (hand washing)
+                const dishwasherWater = 8; // liters per load
+                const toiletFlushWater = 7.5; // liters per flush
+                const brushingTeethWater = 6; // liters per brushing
+
+                const weeklyWaterFootprint = (showers * showerWater) +
+                                             (clothesWashing * clothesWashingWater) +
+                                             (dishesWashing * dishesWashingWater) +
+                                             (dishwasher * dishwasherWater);
+                                             
+                const dailyWaterFootprint = (toiletFlushes * toiletFlushWater) +
+                                            (brushingTeeth * brushingTeethWater);
+
+                const totalWeeklyWaterFootprint = weeklyWaterFootprint + (dailyWaterFootprint * 7);
+                resultDiv.innerHTML = `<h2>Water Footprint</h2>
+                       <p>Your estimated daily water footprint is <strong>${dailyWaterFootprint.toFixed(2)} liters</strong>.</p>
+                       <p>Your estimated weekly water footprint is <strong>${totalWeeklyWaterFootprint.toFixed(2)} liters</strong>.</p>`;
+
+                resultDiv.style.display = 'block';
+
+                if (totalWeeklyWaterFootprint > 1385) {
+                    tipsDiv.style.display = 'block';
+                } else {
+                    tipsDiv.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
